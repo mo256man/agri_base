@@ -33,11 +33,25 @@ sudo wget https://www.piwheels.org/simple/numpy/numpy-1.26.2-cp39-cp39-linux_arm
 
 
 失敗したとき　消す
-インストール先を調べる
-pip show <package>
+pandasとnumpyを消す
+rm -rf <directry>
 
-関連ディレクトリを調べる
-sudo rm -rf <pachage>
+sudo apt-get install python3-pandas
+をしてからremoveし、あらためてpipでインストールする
 
-ディレクトリを削除する
-sudo rm -rf <directry>
+pip install pysqlite3
+
+sudo apt-get install libatlas-base-dev
+pip3 uninstall numpy
+sudp apt-get install python3-numpy
+sudo apt-get install libopenblas-dev
+
+pip install -U bottleneck
+pip install -U numexpr
+
+IPAフォントをインストール
+sudo apt install fonts-ipaexfont
+
+ラズパイに日本語フォントをインストールしてmatplotlibで日本語表示させた件
+https://www.souichi.club/raspberrypi/japanese-font/
+
