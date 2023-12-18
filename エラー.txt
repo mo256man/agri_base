@@ -1,0 +1,9 @@
+----------------------------------------
+ Exception occurred during processing of request from ('127.0.0.1', 38426)
+ Traceback (most recent call last):
+   File "/usr/lib/python3.9/socketserver.py", line 650, in process_request_thre>
+   File "/usr/lib/python3.9/socketserver.py", line 360, in finish_request
+   File "/usr/lib/python3.9/socketserver.py", line 718, in __init__
+   File "/usr/lib/python3.9/socketserver.py", line 770, in setup
+   File "/usr/lib/python3.9/socket.py", line 334, in makefile
+ MemoryError

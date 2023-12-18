@@ -1,0 +1,41 @@
+======================================================
+/etc/systemd/system/agribecky.service
+以下の内容のサービスを指定し起動時にautoexec.shが動く
+------------------------------------------------------
+[Unit]
+Description=AgriBecky
+After=syslog.target
+
+[Service]
+Type = simple
+WorkingDirectory = /home/tab/
+ExecStart = /bin/bash /home/tab/autoexec.sh
+User = tab
+
+[Install]
+WantedBy = multi-user.target
+
+======================================================
+/home/tab/autoexec.sh
+ブラウザを起動するコマンド chromium-browser は動いていない
+------------------------------------------------------
+echo "start autoexec";
+DISPLAY=:0;
+bash chromium-browser;
+bash run_app.sh;
+
+
+======================================================
+/home/tab/arun_app.sh
+contec_dio_start.sh　コンテックのボードを毎回起動させる
+app.py　　　　　　　　　メインのAgricebkyのプログラム
+------------------------------------------------------
+echo "contec start"
+cd /home/tab/contec/cdio/config
+./contec_dio_start.sh
+
+echo "agribecky start"
+PYTHONPATH=/user/local/lib
+DISPLAY=:0
+cd /home/tab/agri/
+python app.py
