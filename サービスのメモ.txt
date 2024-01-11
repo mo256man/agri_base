@@ -1,3 +1,27 @@
+cronを設定
+sudo crontab -e
+
+内容
+0 3 * * * /usr/bin/python3 /home/tab/agri/autorestart.py
+
+サービス開始
+sudo systemctl start cron
+
+
+ブラウザ起動
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+
+内容
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@xset s off
+@xset s noblank
+@xset -dpms
+@chromium-browser --hide-crash-restore-bubble http://0.0.0.0:5000/
+
+
+
 サービスを作る
 sudo nano /etc/systemd/system/agribecky.service
 
@@ -16,32 +40,8 @@ sudo LANG=C systemctl status -l agribecky
 常駐化
 sudo systemctl enable agribecky
 
-ブラウザ起動
-sudo nano /etc/xdg/lxsession/LXDE-pi/autostart を以下のように書き換える
-
-@lxpanel --profile LXDE-pi
-@pcmanfm --desktop --profile LXDE-pi
-@xscreensaver -no-splash
-@xset s off
-@xset s noblank
-@xset -dpms
-@chromium-browser http://0.0.0.0:5000/
-
-
-
-
 DB browser for sqlite
 sudo apt-get install sqlitebrowser
-
-pip install pysqlite3
-
-sudo apt-get install libatlas-base-dev
-pip3 uninstall numpy
-sudp apt-get install python3-numpy
-sudo apt-get install libopenblas-dev
-
-pip install -U bottleneck
-pip install -U numexpr
 
 IPAフォントをインストール
 sudo apt install fonts-ipaexfont
