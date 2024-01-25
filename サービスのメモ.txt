@@ -1,8 +1,14 @@
+agri.dbのconfigテーブルにrestart=1を追加する
+
 cronを設定
 sudo crontab -e
 
 内容
 0 3 * * * /usr/bin/python3 /home/tab/agri/autorestart.py
+
+10分ごとに実行
+*/10 * * * * /usr/bin/python3 /home/tab/agri/autorestart.py
+
 
 サービス開始
 sudo systemctl start cron
