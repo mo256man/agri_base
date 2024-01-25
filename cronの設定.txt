@@ -1,0 +1,8 @@
+定期実行
+
+sudo crontab -e
+sudo sytemctl start cron.service
+
+
+ 分 時 日 月 曜日 command
+0 4 * * * /usr/bin/python3 /home/tab/agri/autorestart.py
