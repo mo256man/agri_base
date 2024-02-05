@@ -1,0 +1,28 @@
+オムロンセンサー　USBに挿す
+
+確認
+lsusb
+
+→ 0590:00d4 Omron Corp. 2JCIE-BU01　があるはず
+
+FTDIのドライバと2JCIE-BUを関連付ける
+sudo modprobe ftdi_sio
+sudo sh -c "echo 0590 00d4 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id"
+
+確認
+dmesg | grep USB
+→　FTDI USB Serial Device converterがttyUSB0に割り当てられている
+
+
+2JCIE-BUを自動認識するように設定
+sudo nano /etc/udev/rules.d/80-2jcie-bu01-usb.rules
+
+内容
+ACTION=="add", \
+KERNEL=="ttyUSB0", ATTRS{idVendor}=="0590", ATTRS{idProduct}=="00d4", \
+RUN+="/sbin/modprobe ftdi_sio", RUN+="/bin/sh -c 'echo 0590 00d4 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"
+
+
+udevに新しいルールを適用
+sudo udevadm control --reload
+
